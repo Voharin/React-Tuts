@@ -1,0 +1,30 @@
+{
+    "products": [{
+            "id": 1,
+            "name": "Lenovo XYZ",
+            "brand": "Lenovo",
+            "price": "4500 TL",
+            "wholesale": "4000 TL",
+            "quantity": 25
+
+        },
+        {
+            "id": 2,
+            "name": "Asus ABC",
+            "brand": "Asus",
+            "price": "8000 TL",
+            "wholesale": "7500 TL",
+            "quantity": 15
+
+        },
+        {
+            "id": 3,
+            "name": "Philips ABC TV",
+            "brand": "Philips",
+            "price": "6000 TL",
+            "wholesale": "5750 TL",
+            "quantity": 19
+
+        }
+    ]
+}
