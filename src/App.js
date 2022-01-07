@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Droppable, Draggable, DragDropContext } from "react-beautiful-dnd";
+import "./App.css";
+import "./styles/boxes.css";
+import { DndProvider } from "react-dnd";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DragDropContext>
+        <div className="wrapper">
+          <div className="wrapper__left">
+           
+              <div className="wrapper__left__box1 --bluebox" draggable 
+              onDragStart={()=>{}}
+              onDragEnd={()=>{}}
+              >box1</div>
+              <div className="wrapper__left__box2">box2</div>
+              <div className="wrapper__left__box3">box3</div>
+            
+          </div>
+          <div className="wrapper__right"
+          onDragOver={(e)=>{e.preventDefault()}}>Right</div>
+        </div>
+      </DragDropContext>
     </div>
   );
 }

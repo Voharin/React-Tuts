@@ -1,0 +1,12 @@
+.wrapper__left>div {
+    width: 100px;
+    border: 1px solid gold;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.--bluebox {
+    background: blue;
+}
