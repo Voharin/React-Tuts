@@ -2,29 +2,51 @@ import { Droppable, Draggable, DragDropContext } from "react-beautiful-dnd";
 import "./App.css";
 import "./styles/boxes.css";
 import { DndProvider } from "react-dnd";
+import React, { Component } from "react";
+import Login from "./components/Login";
+import Todo from "./components/Todo";
+import Appx from "./test/Appx";
 
+// const components = {
+//   "Todo": <Todo/>,
+//   "App": <App />,
 
-function App() {
-  return (
-    <div className="App">
-      <DragDropContext>
-        <div className="wrapper">
-          <div className="wrapper__left">
-           
-              <div className="wrapper__left__box1 --bluebox" draggable 
-              onDragStart={()=>{}}
-              onDragEnd={()=>{}}
-              >box1</div>
-              <div className="wrapper__left__box2">box2</div>
-              <div className="wrapper__left__box3">box3</div>
-            
-          </div>
-          <div className="wrapper__right"
-          onDragOver={(e)=>{e.preventDefault()}}>Right</div>
-        </div>
-      </DragDropContext>
-    </div>
-  );
+// };
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeComponent: " ",
+      listOfProduct: [
+        { fruits: ["banana", "kiwi", "orange"] },
+        { meals: ["burger", "sandwich"] },
+        { salads: ["ceaser", "jallepano"] },
+      ],
+    };
+  }
+
+  handleClick = (event) => {
+    this.setState((prevState) => ({ renderA: !prevState.renderA }));
+  };
+  changeComp = () => {
+    console.log("sssss");
+    return <Todo />;
+  };
+
+  render() {
+    return (
+      <div className="appWrapper">
+        <Login change={this.changeComp}>
+          <Todo />
+        </Login>
+
+        <Appx/>
+       
+        
+      </div>
+    );
+  }
 }
 
 export default App;
