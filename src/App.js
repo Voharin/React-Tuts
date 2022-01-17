@@ -17,7 +17,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: " ",
       activeComponent: " ",
+      fetchedData: "",
       listOfProduct: [
         { fruits: ["banana", "kiwi", "orange"] },
         { meals: ["burger", "sandwich"] },
@@ -25,6 +27,18 @@ class App extends Component {
       ],
     };
   }
+
+  // async componentDidMount() {
+  //   const response =  await fetch("https://randomuser.me/api/")
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  //   const data =  response.json();
+  //   this.setState({ user: data.results[0] });
+  // }
 
   handleClick = (event) => {
     this.setState((prevState) => ({ renderA: !prevState.renderA }));
@@ -34,19 +48,69 @@ class App extends Component {
     return <Todo />;
   };
 
+
+ getApi = async ()=> {
+    await fetch("http://localhost:89/first.php")
+    .then(response =>response.text())
+    .then(data => console.log(data))
+    // .then(data=>this.setState({fetchedData: [...data.results]}))
+    .catch(err =>console.log(err));
+
+   
+  }
+
+  componentDidMount(){
+    this.getApi();
+  }
+  
+  createELement (){
+    let appWrapper = document.querySelector(".list");
+    let lists = ["todo a", "todo b" , "todo c"];
+
+    let nodes = lists.map((list, id) =>{
+      return  {list}
+      
+    });
+    console.log("node:", nodes);
+    appWrapper.append(<di>...nodes</di>);
+    console.log("nodes:", appWrapper);
+  }
+
+ 
   render() {
     return (
+      
       <div className="appWrapper">
+        <div className="list">
+        {this.createELement}
+        </div>
+        
         <Login change={this.changeComp}>
           <Todo />
         </Login>
+            
+        <Appx />
 
-        <Appx/>
+        {/* {this.data.map(name=>{return(<div>name.name</div>)})} */}
+       {/* {
+         data.map(item => {return(<div>{item.name}</div>)})
+       }  */}
+
+       {/* {this.state.fetchedData.map((element) => (<div>{element.name}</div>) 
+         
+       )} */}
        
-        
-      </div>
-    );
-  }
-}
+        {/* (data=>{return (<h1>{data.name}</h1>)})} */}
+<div className="dataWreapper">
 
+          {console.log(this.state.fetchedData)}
+</div>
+        
+        </div>
+
+     
+    );
+  
+}
+}
 export default App;
