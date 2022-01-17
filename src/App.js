@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       user: " ",
       activeComponent: " ",
-      fetchedData: "",
+      fetchedData: [],
       listOfProduct: [
         { fruits: ["banana", "kiwi", "orange"] },
         { meals: ["burger", "sandwich"] },
@@ -48,12 +48,12 @@ class App extends Component {
     return <Todo />;
   };
 
-
+   
  getApi = async ()=> {
     await fetch("http://localhost:89/first.php")
     .then(response =>response.text())
+    .then(data=>this.setState({fetchedData: [...data]}))
     .then(data => console.log(data))
-    // .then(data=>this.setState({fetchedData: [...data.results]}))
     .catch(err =>console.log(err));
 
    
@@ -103,12 +103,10 @@ class App extends Component {
         {/* (data=>{return (<h1>{data.name}</h1>)})} */}
 <div className="dataWreapper">
 
-          {console.log(this.state.fetchedData)}
+          {this.state.fetchedData}
 </div>
-        
         </div>
 
-     
     );
   
 }
